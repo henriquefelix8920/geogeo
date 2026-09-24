@@ -37,14 +37,14 @@ function updateVideoParallax() {
         const scrollProgress = scrollY / heroHeight;
         
         // Move o vídeo para cima (efeito parallax)
-        // 0.3 = intensidade do parallax (aumente para mais movimento)
-        const translateY = scrollY * 0.3;
+        // O vídeo começa em top: -15%, então movemos de 0 a +15%
+        const translateY = scrollProgress * 15;
         
         // Zoom progressivo sutil (1.0 a 1.08)
         const scale = 1 + (scrollProgress * 0.08);
         
         heroVideo.style.transform = 
-            `translate3d(0, -${translateY}px, 0) scale(${scale})`;
+            `translateY(${translateY}%) scale(${scale})`;
     }
 }
 
