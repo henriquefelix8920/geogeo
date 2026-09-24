@@ -1,14 +1,15 @@
 /* ==================================================
-   VARIÁVEIS - Personalize por cliente
+   VARIÁVEIS - Geo Nancy (paleta conforme BRIEFING/FOTOS)
    ================================================== */
 :root {
-    --bg-primary: #F9F7F2;
-    --bg-secondary: #EAE6DE;
-    --bg-dark: #2C2825;
-    --text-primary: #2C2825;
-    --text-secondary: #6B655E;
-    --text-light: #F9F7F2;
-    --accent: #A65D48;
+    --bg-primary: #0D0000;      /* preto vinho profundo (fundo principal) */
+    --bg-secondary: #420404;    /* bordô escuro (seções alternadas) */
+    --bg-tertiary: #7A0101;     /* vermelho vinho (profundidade / transições) */
+    --bg-dark: #0D0000;         /* bloco final */
+    --text-primary: #F7E6E1;    /* creme rosado (texto sobre fundo escuro) */
+    --text-secondary: rgba(247, 230, 225, 0.65);
+    --text-light: #F7E6E1;
+    --accent: #D6245E;          /* magenta vibrante (chamadas, CTAs, labels) */
     --font-display: 'Playfair Display', serif;
     --font-body: 'Manrope', sans-serif;
     --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
@@ -90,7 +91,7 @@ p {
 }
 
 .section-label--light {
-    color: rgba(249, 247, 242, 0.6);
+    color: rgba(247, 230, 225, 0.6);
 }
 
 /* ==================================================
@@ -110,11 +111,11 @@ header {
 }
 
 header.scrolled {
-    background: rgba(249, 247, 242, 0.92);
+    background: rgba(13, 0, 0, 0.88);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     padding: 1.2rem 5%;
-    border-bottom: 1px solid rgba(44, 40, 37, 0.06);
+    border-bottom: 1px solid rgba(214, 36, 94, 0.18);
 }
 
 .logo {
@@ -187,8 +188,9 @@ header.scrolled .nav-cta {
 }
 
 header.scrolled .nav-cta:hover {
-    background: var(--text-primary);
-    color: var(--bg-primary);
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--text-light);
 }
 
 /* ==================================================
@@ -341,6 +343,7 @@ section {
    ================================================== */
 .experience {
     background-color: var(--bg-secondary);
+    background-image: radial-gradient(ellipse at 50% 0%, rgba(122, 1, 1, 0.35) 0%, transparent 60%);
     text-align: center;
 }
 
@@ -357,7 +360,7 @@ section {
 }
 
 .experience-item {
-    border-top: 1px solid rgba(44, 40, 37, 0.12);
+    border-top: 1px solid rgba(247, 230, 225, 0.12);
     padding: 2.5rem 0;
     display: flex;
     justify-content: space-between;
@@ -367,13 +370,13 @@ section {
 }
 
 .experience-item:last-child {
-    border-bottom: 1px solid rgba(44, 40, 37, 0.12);
+    border-bottom: 1px solid rgba(247, 230, 225, 0.12);
 }
 
 .experience-item:hover {
     padding-left: 2rem;
     padding-right: 2rem;
-    background: rgba(255,255,255,0.4);
+    background: rgba(247, 230, 225, 0.04);
 }
 
 .experience-item h3 {
@@ -392,6 +395,7 @@ section {
    ================================================== */
 .gallery {
     background-color: var(--bg-primary);
+    background-image: radial-gradient(ellipse at 85% 15%, rgba(66, 4, 4, 0.55) 0%, transparent 55%);
 }
 
 .gallery-header {
@@ -497,11 +501,11 @@ section {
    ================================================== */
 .footer {
     background-color: var(--bg-dark);
-    color: rgba(249, 247, 242, 0.4);
+    color: rgba(247, 230, 225, 0.4);
     text-align: center;
     padding: 2rem 5%;
     font-size: 0.8rem;
-    border-top: 1px solid rgba(249, 247, 242, 0.08);
+    border-top: 1px solid rgba(247, 230, 225, 0.08);
 }
 
 /* ==================================================
