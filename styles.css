@@ -1,0 +1,603 @@
+/* ==================================================
+   VARIÁVEIS - Personalize por cliente
+   ================================================== */
+:root {
+    --bg-primary: #F9F7F2;
+    --bg-secondary: #EAE6DE;
+    --bg-dark: #2C2825;
+    --text-primary: #2C2825;
+    --text-secondary: #6B655E;
+    --text-light: #F9F7F2;
+    --accent: #A65D48;
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Manrope', sans-serif;
+    --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==================================================
+   RESET & BASE
+   ================================================== */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-weight: 400;
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+img, video {
+    max-width: 100%;
+    display: block;
+    image-rendering: auto;
+}
+
+/* ==================================================
+   TIPOGRAFIA CINEMATOGRÁFICA
+   ================================================== */
+h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+}
+
+h1 {
+    font-size: clamp(3rem, 9vw, 8rem);
+}
+
+h2 {
+    font-size: clamp(2.2rem, 5vw, 4.5rem);
+    margin-bottom: 2rem;
+}
+
+h2 em {
+    font-style: italic;
+    font-weight: 400;
+}
+
+h3 {
+    font-size: 1.4rem;
+    font-family: var(--font-body);
+    font-weight: 500;
+}
+
+p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 60ch;
+}
+
+.section-label {
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.section-label--light {
+    color: rgba(249, 247, 242, 0.6);
+}
+
+/* ==================================================
+   HEADER / NAVEGAÇÃO
+   ================================================== */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    transition: all 0.6s var(--ease-cinematic);
+}
+
+header.scrolled {
+    background: rgba(249, 247, 242, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 1.2rem 5%;
+    border-bottom: 1px solid rgba(44, 40, 37, 0.06);
+}
+
+.logo {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-style: italic;
+    color: var(--text-light);
+    transition: color 0.4s ease;
+    letter-spacing: 0.02em;
+}
+
+header.scrolled .logo {
+    color: var(--text-primary);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    position: relative;
+    transition: color 0.4s ease;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: currentColor;
+    transition: width 0.4s var(--ease-cinematic);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+header.scrolled .nav-links a {
+    color: var(--text-primary);
+}
+
+.nav-cta {
+    padding: 0.8rem 1.8rem;
+    border: 1px solid rgba(255,255,255,0.4);
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: all 0.4s ease;
+    font-weight: 500;
+}
+
+.nav-cta:hover {
+    background: var(--text-light);
+    color: var(--text-primary);
+}
+
+header.scrolled .nav-cta {
+    border-color: var(--text-primary);
+    color: var(--text-primary);
+}
+
+header.scrolled .nav-cta:hover {
+    background: var(--text-primary);
+    color: var(--bg-primary);
+}
+
+/* ==================================================
+   HERO CINEMATOGRÁFICO (Parallax REAL)
+   ================================================== */
+.hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.hero-video-container {
+    position: absolute;
+    top: -10%;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    z-index: 1;
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+.hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.85);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        180deg,
+        rgba(0,0,0,0.15) 0%,
+        rgba(0,0,0,0.3) 50%,
+        rgba(0,0,0,0.55) 100%
+    );
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    color: var(--text-light);
+    padding: 0 2rem;
+}
+
+.hero-subtitle {
+    font-size: 0.85rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1.2s 0.3s forwards var(--ease-cinematic);
+}
+
+.hero-title {
+    color: var(--text-light);
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeUp 1.4s 0.6s forwards var(--ease-cinematic);
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    color: var(--text-light);
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeUp 1s 1.8s forwards ease-out;
+}
+
+.scroll-indicator::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 60px;
+    background: rgba(255,255,255,0.5);
+    margin: 1rem auto 0;
+    animation: scrollLine 2.5s infinite ease-in-out;
+}
+
+/* ==================================================
+   SEÇÕES BASE
+   ================================================== */
+section {
+    padding: 8rem 5%;
+    position: relative;
+}
+
+/* ==================================================
+   SOBRE (Sticky Image)
+   ================================================== */
+.about {
+    background-color: var(--bg-primary);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+    min-height: 100vh;
+}
+
+.about-image-wrapper {
+    position: sticky;
+    top: 15vh;
+    height: 75vh;
+    overflow: hidden;
+}
+
+.about-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.5s var(--ease-cinematic);
+}
+
+.about-image-wrapper:hover .about-image {
+    transform: scale(1.04);
+}
+
+.about-content {
+    padding-top: 20vh;
+}
+
+.about-content p {
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    line-height: 1.8;
+}
+
+/* ==================================================
+   EXPERIÊNCIA (Lista Editorial)
+   ================================================== */
+.experience {
+    background-color: var(--bg-secondary);
+    text-align: center;
+}
+
+.experience-header {
+    max-width: 700px;
+    margin: 0 auto 5rem;
+}
+
+.experience-list {
+    list-style: none;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.experience-item {
+    border-top: 1px solid rgba(44, 40, 37, 0.12);
+    padding: 2.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    transition: all 0.5s var(--ease-cinematic);
+    cursor: default;
+}
+
+.experience-item:last-child {
+    border-bottom: 1px solid rgba(44, 40, 37, 0.12);
+}
+
+.experience-item:hover {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    background: rgba(255,255,255,0.4);
+}
+
+.experience-item h3 {
+    font-size: 1.6rem;
+}
+
+.experience-item span {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--accent);
+    font-size: 1.1rem;
+}
+
+/* ==================================================
+   GALERIA (Grid Assimétrico Premium)
+   ================================================== */
+.gallery {
+    background-color: var(--bg-primary);
+}
+
+.gallery-header {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: minmax(200px, auto);
+    gap: 1.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-secondary);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.8s var(--ease-cinematic);
+    display: block;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.08);
+}
+
+.gallery-item--large {
+    grid-column: 1 / 8;
+    grid-row: span 2;
+    min-height: 600px;
+}
+
+.gallery-item--medium {
+    grid-column: 8 / 13;
+    min-height: 280px;
+    margin-top: 4rem;
+}
+
+.gallery-item--small {
+    grid-column: 8 / 13;
+    min-height: 280px;
+}
+
+/* ==================================================
+   CTA FINAL
+   ================================================== */
+.contact {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    text-align: center;
+    padding: 10rem 5%;
+}
+
+.contact-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact h2 {
+    color: var(--text-light);
+    font-size: clamp(2.5rem, 6vw, 5.5rem);
+    margin-bottom: 3rem;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1.3rem 3.5rem;
+    background-color: var(--accent);
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: all 0.5s var(--ease-cinematic);
+    border: 1px solid var(--accent);
+    margin-bottom: 2rem;
+}
+
+.cta-button:hover {
+    background-color: transparent;
+    color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.contact-note {
+    margin: 0 auto;
+    font-size: 0.9rem;
+    opacity: 0.5;
+    font-style: italic;
+}
+
+/* ==================================================
+   FOOTER
+   ================================================== */
+.footer {
+    background-color: var(--bg-dark);
+    color: rgba(249, 247, 242, 0.4);
+    text-align: center;
+    padding: 2rem 5%;
+    font-size: 0.8rem;
+    border-top: 1px solid rgba(249, 247, 242, 0.08);
+}
+
+/* ==================================================
+   ANIMAÇÕES REVEAL (Scroll)
+   ================================================== */
+.reveal {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 1.2s var(--ease-cinematic), transform 1.2s var(--ease-cinematic);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==================================================
+   KEYFRAMES
+   ================================================== */
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scrollLine {
+    0% { transform: scaleY(0); transform-origin: top; }
+    50% { transform: scaleY(1); transform-origin: top; }
+    51% { transform: scaleY(1); transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+/* ==================================================
+   RESPONSIVIDADE CINEMATOGRÁFICA
+   ================================================== */
+@media (max-width: 900px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .about {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .about-image-wrapper {
+        position: relative;
+        top: 0;
+        height: 60vh;
+    }
+    
+    .about-content {
+        padding-top: 0;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .gallery-item--large,
+    .gallery-item--medium,
+    .gallery-item--small {
+        grid-column: 1 / -1;
+        grid-row: auto;
+        min-height: 400px;
+        margin-top: 0;
+    }
+    
+    .experience-item {
+        flex-direction: column;
+        gap: 0.8rem;
+        align-items: flex-start;
+    }
+    
+    section {
+        padding: 5rem 5%;
+    }
+}
+
+/* ==================================================
+   ACESSIBILIDADE: Reduced Motion
+   ================================================== */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    html {
+        scroll-behavior: auto;
+    }
+    
+    .hero-video-container {
+        transform: none !important;
+    }
+}
