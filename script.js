@@ -2,45 +2,55 @@
    HEADER: muda ao rolar
    ================================================== */
 const header = document.getElementById('header');
-let lastScroll = 0;
 
 window.addEventListener('scroll', () => {
-    const currentScroll = window.scrollY;
-    
-    if (currentScroll > 80) {
+    if (window.scrollY > 80) {
         header.classList.add('scrolled');
     } else {
         header.classList.remove('scrolled');
     }
-    
-    lastScroll = currentScroll;
 }, { passive: true });
 
 /* ==================================================
-   PARALLAX REAL NO HERO
-   Move o container inteiro + zoom progressivo
+   VÍDEO ESTÁTICO COM PARALLAX NO SCROLL
+   O vídeo fica parado no primeiro frame e só se move
+   quando o usuário rola a página (efeito câmera descendo)
    ================================================== */
 const hero = document.querySelector('.hero');
-const heroVideoContainer = document.querySelector('.hero-video-container');
+const heroVideo = document.getElementById('heroVideo');
 
-function updateHeroParallax() {
+// Garante que o vídeo está pausado no primeiro frame
+if (heroVideo) {
+    heroVideo.pause();
+    heroVideo.currentTime = 0;
+}
+
+function updateVideoParallax() {
+    if (!heroVideo || !hero) return;
+    
     const scrollY = window.scrollY;
     const heroHeight = hero.offsetHeight;
     
+    // Só aplica o efeito enquanto o hero está visível
     if (scrollY < heroHeight) {
-        // Container se move mais devagar que o scroll (efeito parallax)
-        const translateY = scrollY * 0.35;
-        // Zoom progressivo suave
-        const scale = 1 + (scrollY * 0.0004);
+        // Porcentagem de scroll dentro do hero (0 a 1)
+        const scrollProgress = scrollY / heroHeight;
         
-        heroVideoContainer.style.transform = 
-            `translate3d(0, ${translateY}px, 0) scale(${scale})`;
+        // Move o vídeo para cima (efeito parallax)
+        // 0.3 = intensidade do parallax (aumente para mais movimento)
+        const translateY = scrollY * 0.3;
+        
+        // Zoom progressivo sutil (1.0 a 1.08)
+        const scale = 1 + (scrollProgress * 0.08);
+        
+        heroVideo.style.transform = 
+            `translate3d(0, -${translateY}px, 0) scale(${scale})`;
     }
 }
 
-window.addEventListener('scroll', updateHeroParallax, { passive: true });
-window.addEventListener('resize', updateHeroParallax, { passive: true });
-updateHeroParallax();
+window.addEventListener('scroll', updateVideoParallax, { passive: true });
+window.addEventListener('resize', updateVideoParallax, { passive: true });
+updateVideoParallax();
 
 /* ==================================================
    REVEAL ANIMATIONS (Intersection Observer)
@@ -50,9 +60,8 @@ const revealElements = document.querySelectorAll(
 );
 
 const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry, index) => {
+    entries.forEach((entry) => {
         if (entry.isIntersecting) {
-            // Delay progressivo para elementos irmãos
             const delay = entry.target.dataset.delay || 0;
             entry.target.style.transitionDelay = `${delay}ms`;
             entry.target.classList.add('reveal', 'active');
@@ -64,7 +73,7 @@ const revealObserver = new IntersectionObserver((entries) => {
     rootMargin: '0px 0px -80px 0px'
 });
 
-// Adiciona delay progressivo para itens de lista e galeria
+// Delay progressivo para itens de lista e galeria
 document.querySelectorAll('.experience-item').forEach((el, i) => {
     el.dataset.delay = i * 100;
 });
