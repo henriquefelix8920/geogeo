@@ -3,53 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0D0000">
-
-    <!-- SEO: Geo Nancy -->
-    <title>Geo Nancy | Acompanhante de Luxo em Fortaleza</title>
-    <meta name="description" content="Geo Nancy — acompanhante de luxo em Fortaleza. Atendimento sensual, carinhoso e com total discrição. Videochamadas e packs exclusivos.">
-
-    <!-- Preload de fontes para performance -->
+    <meta name="theme-color" content="#F9F7F2">
+    
+    <title>Nome da Cliente | Experiência Exclusiva</title>
+    <meta name="description" content="Uma experiência digital exclusiva e sofisticada.">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap">
-
+    
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
     <!-- Navegação -->
     <header id="header">
-        <div class="logo">Geo Nancy</div>
+        <div class="logo">Nome da Marca</div>
         <nav class="nav-links">
             <a href="#sobre">Sobre</a>
             <a href="#experiencia">Experiência</a>
             <a href="#galeria">Galeria</a>
         </nav>
-        <a href="#contato" class="nav-cta">Agendar</a>
+        <a href="#contato" class="nav-cta">Contato</a>
     </header>
 
-    <!-- Hero Cinematográfico com Parallax REAL -->
+    <!-- Hero Cinematográfico com VÍDEO ESTÁTICO + PARALLAX -->
     <section class="hero" id="hero">
         <div class="hero-video-container">
+            <!-- Vídeo SEM autoplay e SEM loop. Fica parado no primeiro frame e só se move com o scroll -->
             <video 
                 class="hero-video" 
                 id="heroVideo" 
-                autoplay 
                 muted 
-                loop 
                 playsinline 
-                poster="images/02-modelofrente.jpg"
+                poster="images/02-retrato.jpg"
+                preload="auto"
                 aria-hidden="true">
-                <source src="images/01-videofundo.mp4" type="video/mp4">
+                <source src="images/01-hero.mp4" type="video/mp4">
             </video>
             <div class="hero-overlay"></div>
         </div>
         
         <div class="hero-content">
-            <p class="hero-subtitle">Acompanhante de Luxo · Fortaleza</p>
-            <h1 class="hero-title">Sedução em<br>cada detalhe.</h1>
+            <p class="hero-subtitle">Experiência Exclusiva</p>
+            <h1 class="hero-title">Elegância em<br>cada detalhe.</h1>
         </div>
 
         <div class="scroll-indicator">
@@ -60,11 +58,11 @@
     <!-- Seção Sobre com Sticky Image -->
     <section class="about" id="sobre">
         <div class="about-image-wrapper">
-            <img src="images/02-modelofrente.jpg" alt="Retrato elegante e sofisticado de Geo Nancy" class="about-image">
+            <img src="images/02-retrato.jpg" alt="Retrato elegante e sofisticado" class="about-image">
         </div>
         <div class="about-content">
             <p class="section-label">Sobre</p>
-            <h2>Sensual e<br><em>carinhosa.</em></h2>
+            <h2>Presença que<br><em>inspira.</em></h2>
             <p>Mais do que uma imagem, uma experiência cuidadosamente construída. Cada encontro é pensado para oferecer sofisticação, discrição e uma conexão genuína.</p>
             <p>Com uma estética refinada e atenção absoluta aos detalhes, o objetivo é proporcionar momentos que transcendem o comum.</p>
         </div>
@@ -79,16 +77,16 @@
         
         <ul class="experience-list">
             <li class="experience-item">
-                <h3>Acompanhante de Luxo</h3>
-                <span>Elegância &amp; Discrição</span>
+                <h3>Jantares e Eventos</h3>
+                <span>Discrição & Classe</span>
             </li>
             <li class="experience-item">
-                <h3>Videochamadas</h3>
-                <span>Conexão Íntima</span>
+                <h3>Viagens Nacionais</h3>
+                <span>Companhia Premium</span>
             </li>
             <li class="experience-item">
-                <h3>Venda de Packs</h3>
-                <span>Conteúdo Exclusivo</span>
+                <h3>Encontros Personalizados</h3>
+                <span>Sob Medida</span>
             </li>
         </ul>
     </section>
@@ -101,13 +99,13 @@
         </div>
         <div class="gallery-grid">
             <div class="gallery-item gallery-item--large">
-                <img src="images/03-modelofrente.jpg" alt="Composição artística" loading="lazy">
+                <img src="images/03-galeria.jpg" alt="Composição artística" loading="lazy">
             </div>
             <div class="gallery-item gallery-item--medium">
-                <img src="images/02-modelofrente.jpg" alt="Retrato editorial" loading="lazy">
+                <img src="images/02-retrato.jpg" alt="Retrato editorial" loading="lazy">
             </div>
             <div class="gallery-item gallery-item--small">
-                <img src="images/03-modelofrente.jpg" alt="Detalhe estético" loading="lazy">
+                <img src="images/03-galeria.jpg" alt="Detalhe estético" loading="lazy">
             </div>
         </div>
     </section>
@@ -117,14 +115,14 @@
         <div class="contact-content">
             <p class="section-label section-label--light">Próximo Passo</p>
             <h2>Vamos criar algo<br><em>memorável?</em></h2>
-            <a href="https://wa.me/5567976543456" class="cta-button" target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
+            <a href="#" class="cta-button">Solicitar Informações</a>
             <p class="contact-note">Atendimento com total discrição e sigilo.</p>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2026 Geo Nancy. Todos os direitos reservados.</p>
+        <p>&copy; 2026 Nome da Marca. Todos os direitos reservados.</p>
     </footer>
 
     <script src="script.js"></script>
